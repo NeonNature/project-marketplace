@@ -1,0 +1,35 @@
+$dob=date("Y-m-d",strtotime($_POST['dob']));
+*******************************************************************
+<input name="dob" type="text" size="50" id="dob"
+	                    maxlength="50" value="<?php echo date("d-M-Y")?>" 
+***************************************************************************/
+		//Check for Duplicated "User Name"
+		$userName_sql="SELECT * FROM `Customer` " .
+						"WHERE `CustomerEmail`='$Email'";
+
+		$result=mysql_query($userName_sql) or die(mysql_error());
+		
+		$noOfRows=mysql_num_rows($result);
+		
+		if ($noOfRows>0) 
+		{
+			$message="Email already existed";
+			echo "<html>
+			 <body>
+			 <script language=\"javascript\">
+ 			 alert('$message');
+			 </script>
+			 </body>
+			 </html>";
+			 echo '<meta http-equiv=refresh content=0;url=CustomerRegistration.php>';
+			exit();
+		}
+************************************************************************
+<link type="text/css" href="DatePicker/datepicker.css" rel="stylesheet"/>
+<script type="text/javascript" src="DatePicker/datepicker.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+********************************************************
+<td>
+    <input type="text"name="dob" id="dob" onFocus="showCalender(calender,this)"  required />
+</td>
+*******************************************************************
